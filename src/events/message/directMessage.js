@@ -34,7 +34,9 @@ module.exports = class DirectMessageEvent extends BaseEvent {
                         const choice = reactions.get(ACCEPT) || reactions.get(REJECT);
                         if (choice.emoji.id === ACCEPT) {
                             await handleCollector(channel, message);
-                            message.channel.send("Thank you for using KC's ModMail. Fell free to reachout later or create a ticket at <#716221404521168896>");
+                            const embed2 = new MessageEmbed()
+                            setDescription("Thank you for using KC's ModMail. Fell free to reachout later or create a ticket at <#716221404521168896>");
+                            message.channel.send(embed2);
                             openedTickets.delete(message.author.id);
                         } else if (choice.emoji.id === REJECT) {
                             message.author.send('Your message was rejected. You may try again later');
