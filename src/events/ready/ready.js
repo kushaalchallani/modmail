@@ -7,8 +7,6 @@ module.exports = class ReadyEvent extends BaseEvent {
   
     async run (client) {
     console.log(client.user.tag + ' is now online.');
-
-      bot.user.setActivity("KC's Universe", {type: "WATCHING"})
   }
   
 }
