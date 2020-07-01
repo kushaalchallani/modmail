@@ -5,6 +5,7 @@
     "gold": "#daa520",
     "red_dark": "#8e2430",
     "red_light": "#f94343",
+    "red_bright": "FF0000",
     "blue_dark": "#3b5998",
     "cyan": "#5780cd",
     "blue_light": "#ace9e7",
@@ -12,6 +13,7 @@
     "pink": "#ff9dbb",
     "green_dark": "#2ac075",
     "green_light": "#a1ee33",
+    "green_bright": "80FF00",
     "white": "#f9f9f6",
     "cream": "#ffdab9"
 }

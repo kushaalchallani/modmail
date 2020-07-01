@@ -15,14 +15,22 @@ module.exports = class DirectMessageEvent extends BaseEvent {
   async run(client, message) {
       console.log('Inside DM Event');
           if (!openedTickets.has(message.author.id)) {
-              message.channel.send(`Hello, We have received you message. Please wait momentarily while one of our staff will het back to you.`);
+            const embed5 = new MessageEmbed()
+            .setTitle('Mail Created')
+            .setColor(colors.green_light)
+            .setTimestamp()
+            .setFooter("Your message has been sent", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+            .setDescription("Please wait momentarily while one of our staff will het back to you.");
+              message.channel.send(embed5);
               openedTickets.set(message.author.id, message.guild);
               const channel = client.channels.cache.get(DESTINATION);
               if (channel) {
                   const embed = new MessageEmbed()
-                    .setTitle('New Modmail Message')
-                    .setColor(colors.green_light)
-                    .setAuthor(message.author.tag, message.author.displayAvatarURL())
+                    .setTitle('New Modmail')
+                    .setColor(colors.green_bright)
+                    .setTimestamp()
+                    .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+                    .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true, format: 'png' }))
                     .setDescription(message.content);
                     const msg = await channel.send(embed);
                     await msg.react(ACCEPT);
@@ -35,23 +43,45 @@ module.exports = class DirectMessageEvent extends BaseEvent {
                         if (choice.emoji.id === ACCEPT) {
                             await handleCollector(channel, message);
                             const embed2 = new MessageEmbed()
-                            setDescription("Thank you for using KC's ModMail. Fell free to reachout later or create a ticket at <#716221404521168896>");
+                            .setColor(colors.blue_dark)
+                            .setTitle("Mail Closed")
+                            .setTimestamp()
+                            .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+                            .setDescription("Fell free to reachout later or create a ticket at <#716221404521168896>")
                             message.channel.send(embed2);
                             openedTickets.delete(message.author.id);
                         } else if (choice.emoji.id === REJECT) {
-                            message.author.send('Your message was rejected. You may try again later');
+                            const embed3 = new MessageEmbed()
+                            .setTitle('Mail Rejected')
+                            .setColor(colors.red_bright)
+                            .setTimestamp()
+                            .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+                            .setDescription('Your message was rejected. You may try again later');
+                            message.author.send(embed3);
                             setTimeout(() => {
                                 openedTickets.delete(message.author.id);
                             }, 10000);
                         }
                     } catch (err) {
                         console.log(err);
-                        message.author.send("No one was available to accept your query. Please try again");
+                        const embed6 = new MessageEmbed()
+                            .setTitle('Staff Unavailable')
+                            .setColor(colors.red_bright)
+                            .setTimestamp()
+                            .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+                            .setDescription("No one was available to accept your query. Please try again");
+                            message.author.send(embed6);
                         openedTickets.delete(message.author.id);
                     }
 
               }else {
-                  message.channel.send(`Something went wrong... Please reach out to a server staff directly.`);
+                const embed4 = new MessageEmbed()
+                .setTitle('ERROR')
+                .setColor(colors.red_bright)
+                .setTimestamp()
+                .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+                .setDescription(`Something went wrong... Please reach out to a server staff directly.`);
+                  message.channel.send(embed4);
                   openedTickets.delete(message.author.id);
               }
           }
@@ -69,7 +99,7 @@ module.exports = class DirectMessageEvent extends BaseEvent {
     return new Promise((resolve, reject) => {
         dmCollector.on('collect', m => {
             const files = getAttachmentLinks(m.attachments);
-            channel.send(`[${m.author.tag} (${m.author.id})]: ${m.content}`, {
+            channel.send(`**[${m.author.tag} (${m.author.id})]**: ${m.content}`, {
                 files
             });
         });
@@ -80,7 +110,7 @@ module.exports = class DirectMessageEvent extends BaseEvent {
                 resolve();
             } else {
                 const files = getAttachmentLinks(m.attachments);
-                message.author.send(`[${m.author.tag} (${m.author.id})]: ${m.content}`, {
+                message.author.send(`**[${m.author.tag} (${m.author.id})]**: ${m.content}`, {
                     files
                 });
             }
