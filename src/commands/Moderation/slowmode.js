@@ -6,7 +6,7 @@ const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('slowmode', '', []);
+    super('slowmode', 'Change the slowmode of a channel', ['slowtext', 'slowchat', 'slowtype']);
   }
 
   async run(client, message, args) {

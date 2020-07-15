@@ -5,7 +5,7 @@ const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('verify', '', []);
+    super('verify', 'Verify on the server', []);
   }
 
   async run(client, message, args) {
