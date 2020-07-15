@@ -19,7 +19,7 @@ module.exports = class extends BaseCommand {
     }
 
     if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
-        return  message.channel.user("This is not a number").then(m => m.delete({ timeout: 5000}));
+        return  message.channel.send("This is not a number").then(m => m.delete({ timeout: 5000}));
     }
 
     let deleteAmount;
