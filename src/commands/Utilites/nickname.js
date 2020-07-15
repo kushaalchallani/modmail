@@ -4,7 +4,7 @@ const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('nickname', 'Changes nickname of a user', ['nick', 'n']);
+    super('nickname', 'Changes nickname of a user', ['nick']);
   }
 
   async run(client, message, args) {
