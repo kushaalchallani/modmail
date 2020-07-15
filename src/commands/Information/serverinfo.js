@@ -36,7 +36,7 @@ const regions = {
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('uptime', 'Check the uptime of the bot', ['up']);
+    super('serverinfo', 'Know about the server', ['si', 'serverdesc']);
   }
 
   async run(client, message, args) {
