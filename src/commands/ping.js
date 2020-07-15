@@ -15,7 +15,7 @@ module.exports = class extends BaseCommand {
               `
     🏓Pong!\nLatency is ${Math.floor(
                 msg.createdTimestamp - message.createdTimestamp
-              )}ms\nAPI Latency is ${Math.round(this.client.ws.ping)}ms`
+              )}ms\nAPI Latency is ${Math.round(client.ws.ping)}ms`
             )
             .setColor("RANDOM");
           msg.edit(_);
