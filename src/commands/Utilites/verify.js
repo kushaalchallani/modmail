@@ -1,7 +1,7 @@
-const BaseCommand = require('.././utils/structures/BaseCommand');
+const BaseCommand = require('../../utils/structures/BaseCommand');
 const Discord = require("discord.js");
 const { MessageEmbed } = require('discord.js');
-const color = require("../../src/events/message/colors.json")
+const color = require("../../../src/events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
@@ -9,6 +9,8 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, message, args) {
+    message.delete()
+
     if (message.member.roles.cache.has('707197658007339069')) {
         const embed = new MessageEmbed()
         .setTitle("You are already Verified")
