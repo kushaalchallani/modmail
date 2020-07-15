@@ -1,5 +1,6 @@
 const BaseCommand = require('../../utils/structures/BaseCommand');
 const Discord = require("discord.js");
+const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
@@ -17,7 +18,7 @@ module.exports = class extends BaseCommand {
                 msg.createdTimestamp - message.createdTimestamp
               )}ms\nAPI Latency is ${Math.round(client.ws.ping)}ms`
             )
-            .setColor("RANDOM");
+            .setColor(color.blue_light);
           msg.edit(_);
           msg.edit("\u200B");
         });
