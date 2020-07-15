@@ -12,7 +12,7 @@ module.exports = class extends BaseCommand {
   async run(client, message, args) {
 
     const embed  = new MessageEmbed()
-    .setColor(color.blue_light)
+    .setColor("BLUE")
     .setTitle("Uptime")
     .setDescription(`My uptime is \`${ms(client.uptime, {long: true })}\``)
     

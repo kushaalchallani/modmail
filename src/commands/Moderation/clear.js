@@ -6,7 +6,7 @@ const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('clear', '', []);
+    super('clear', 'Clears the Messages', ['c', 'mdelete', 'massdelete']);
   }
 
   async run(client, message, args) {

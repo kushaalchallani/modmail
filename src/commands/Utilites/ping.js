@@ -18,7 +18,7 @@ module.exports = class extends BaseCommand {
                 msg.createdTimestamp - message.createdTimestamp
               )}ms\nAPI Latency is ${Math.round(client.ws.ping)}ms`
             )
-            .setColor(color.blue_light);
+            .setColor("BLUE");
           msg.edit(_);
           msg.edit("\u200B");
         });
