@@ -35,5 +35,7 @@ module.exports = class extends BaseCommand {
       .setDescription(`Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
       .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
+
+      message.channel.send(embed)
   }
   }
