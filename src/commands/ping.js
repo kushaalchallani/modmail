@@ -1,21 +1,19 @@
 const BaseCommand = require('.././utils/structures/BaseCommand');
 const Discord = require("discord.js");
 
-module.exports = class ping extends BaseCommand {
+module.exports = class extends BaseCommand {
   constructor() {
     super('ping', 'pinging', []);
   }
 
   async run(client, message, args) {
     message.channel.send(`
-    🏓
-     Pinging....`).then((msg) => {
+    🏓Pinging....`).then((msg) => {
           const _ = new Discord.MessageEmbed()
             .setTitle("Pong!")
             .setDescription(
               `
-    🏓
-     Pong!\nLatency is ${Math.floor(
+    🏓Pong!\nLatency is ${Math.floor(
                 msg.createdTimestamp - message.createdTimestamp
               )}ms\nAPI Latency is ${Math.round(this.client.ws.ping)}ms`
             )
