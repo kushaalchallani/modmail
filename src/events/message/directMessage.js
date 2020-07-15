@@ -104,7 +104,7 @@ module.exports = class DirectMessageEvent extends BaseEvent {
             });
         });
         guildChannelCollector.on('collect', m => {
-            if (m.content.toLowerCase() === '--close') {
+            if (m.content.toLowerCase() === '>close') {
                 guildChannelCollector.stop();
                 dmCollector.stop();
                 resolve();
