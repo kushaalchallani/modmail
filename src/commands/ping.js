@@ -1,8 +1,8 @@
 const BaseCommand = require('.././utils/structures/BaseCommand');
 
-module.exports = class TestCommand extends BaseCommand {
+module.exports = class ping extends BaseCommand {
   constructor() {
-    super('ping', '', []);
+    super('ping', 'pinging', []);
   }
 
   async run(client, message, args) {
