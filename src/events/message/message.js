@@ -14,13 +14,6 @@ module.exports = class MessageEvent extends BaseEvent {
 
     if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`>\`**.`);
 
-    const prefix = message.content.match(mentionRegexPrefix) ?
-        message.content.match(mentionRegexPrefix)[0] : client.DISCORD_BOT_PREFIX;
-
-    if(!message.content.startsWith(DISCORD_BOT_PREFIX)) return;
-
-
-
 
     // Checks if the member has a nickname
 if(message.member.nickname) {
