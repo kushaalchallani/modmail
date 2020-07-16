@@ -12,7 +12,7 @@ module.exports = class extends BaseCommand {
         return message.channel.send({embed: {color: "RED", description: "You can't use this command!"}})
       }
       
-      let user = message.mentions.users.first() || await <Client>.users.fetch(id)  // You can mention someone, not only just user.
+      let user = message.mentions.users.first()
       if (!user) return message.channel.send({embed: {color: "RED", description: "You need to mention the user!"}});
       
       let nick = args.slice(1).join(" ");
