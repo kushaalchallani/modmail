@@ -7,18 +7,18 @@ module.exports = class MessageEvent extends BaseEvent {
   
   async run(client, message) {
 
-    const mentionRegex = RegExp(`^<@!${this.client.user.id}>$`);
-    const mentionRegexPrefix = RegExp(`^<@!${this.client.user.id}> `);
+    const mentionRegex = RegExp(`^<@!${client.user.id}>$`);
+    const mentionRegexPrefix = RegExp(`^<@!${client.user.id}> `);
 
     if (!message.guild || message.author.bot) return;
 
-    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`${this.client.prefix}\`**.\nType **\`${this.client.prefix}help\`** for more info`);
+    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`${client.prefix}\`**.\nType **\`${this.client.prefix}help\`** for more info`);
 
     const prefix = message.content.match(mentionRegexPrefix) ?
-        message.content.match(mentionRegexPrefix)[0] : this.client.prefix;
+        message.content.match(mentionRegexPrefix)[0] : client.prefix;
 
     if(!message.content.startsWith(prefix)) return;
-    
+
     // Checks if the member has a nickname
 if(message.member.nickname) {
   // Checks if the member who sent a message is currently set as AFK, if so reset the nickname
