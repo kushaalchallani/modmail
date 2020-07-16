@@ -12,12 +12,15 @@ module.exports = class MessageEvent extends BaseEvent {
 
     if (!message.guild || message.author.bot) return;
 
-    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`${client.prefix}\`**.\nType **\`${this.client.prefix}help\`** for more info`);
+    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`${client.DISCORD_BOT_PREFIX}\`**.\nType **\`${client.DISCORD_BOT_PREFIX}help\`** for more info`);
 
     const prefix = message.content.match(mentionRegexPrefix) ?
-        message.content.match(mentionRegexPrefix)[0] : client.prefix;
+        message.content.match(mentionRegexPrefix)[0] : client.DISCORD_BOT_PREFIX;
 
-    if(!message.content.startsWith(prefix)) return;
+    if(!message.content.startsWith(DISCORD_BOT_PREFIX)) return;
+
+
+
 
     // Checks if the member has a nickname
 if(message.member.nickname) {
@@ -30,6 +33,9 @@ if(message.member.nickname) {
     if(message.mentions.members.first().displayName.startsWith("[AFK]")) 
     return message.reply("That user is currently afk!");
   }
+
+
+
 
     if (message.author.bot) return;
     if(message.channel.type === 'dm') {
