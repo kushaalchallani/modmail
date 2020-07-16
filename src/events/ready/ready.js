@@ -17,8 +17,9 @@ module.exports = class ReadyEvent extends BaseEvent {
 
     setInterval(function(){
       let status = statuses[Math.floor(Math.random() * statuses.length)]
-      client.user.setActivity(status, {type: "WATCHING"});
-  }, 5000)
+      client.user.setActivity("lol", { type: "WATCHING"})
+      client.user.setActivity("lol2", { type: "PLAYING"})
+  }, 20000)
   }
   
 }
