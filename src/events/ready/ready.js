@@ -6,19 +6,14 @@ module.exports = class ReadyEvent extends BaseEvent {
   }
   
     async run (client) {
-    //client.user.setActivity("DM to Contact Staff", {type: "PLAYING"});
     console.log(client.user.tag + ' is now online.');
 
-    let statuses = [
-      `over ${client.users.cache.size} users!`,
-      `#🌐┃global-chat`,
-      `DM to Contact Staff`,
-    ]
+    let statuses = [ {name: "lol", options: { type: "WATCHING" }}, { name: "lol2", options: { type: "PLAYING" }}]
 
-    setInterval(function(){
-      let status = statuses[Math.floor(Math.random() * statuses.length)]
-      client.user.setActivity(status, {type: "WATCHING"});
-  }, 5000)
+    setInterval(() => {
+      const status = statuses[Math.floor(Math.random() * statuses.length)];
+      client.user.setActivity(status.name, status.options);
+    }, 5000);
   }
   
 }
