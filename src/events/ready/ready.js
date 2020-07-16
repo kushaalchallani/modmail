@@ -16,7 +16,7 @@ module.exports = class ReadyEvent extends BaseEvent {
 
     setInterval(function(){
       let status = statuses[Math.floor(Math.random() * statuses.length)]
-  }, 20000)
+  }, 5000)
   }
   
 }
