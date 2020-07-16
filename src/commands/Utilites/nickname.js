@@ -12,7 +12,7 @@ module.exports = class extends BaseCommand {
         return message.channel.send({embed: {color: "RED", description: "You can't use this command!"}})
       }
       
-      let user = message.mentions.users.first()
+      let user = message.mentions.users.first() ||  message.guild.members.cache.get(args[0]);
       if (!user) return message.channel.send({embed: {color: "RED", description: "You need to mention the user!"}});
       
       let nick = args.slice(1).join(" ");

@@ -23,6 +23,7 @@ module.exports = class ReadyEvent extends BaseEvent {
       { name: "everyone", options: { type: "WATCHING"}},
       { name: `${client.users.cache.size}`, options: { type: "WATCHING"}},
       { name: "Rainbow 6 Siege", options: { type: "PLAYING" }},
+      { name: "", options: { type: "WATCHING"}},
 
     ]
 
