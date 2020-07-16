@@ -17,7 +17,7 @@ module.exports = class ReadyEvent extends BaseEvent {
 
     setInterval(function() {
       let status = statuses[Math.floor(Math.random() * statuses.length)];
-      lient.user.setActivity(status, {type: "Watching"});
+      client.user.setActivity(status, {type: "Watching"});
     }, 5000)
   }
   
