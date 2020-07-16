@@ -17,6 +17,7 @@ module.exports = class ReadyEvent extends BaseEvent {
       { name: "the spammers", options: { type: "WATCHING" }},
       { name: "🌐┃global-chat", options: { type: "STREAMING", URL: 'https://www.twitch.tv/kcplayzyt' }},
       { name: "giveaways", options: { type: "WATCHING"}},
+      { name: `${client.users.cache.size}`, options: { type: "WATCHING"}},
       { name: "Rainbow 6 Siege", options: { type: "PLAYING" }},
 
     ]
