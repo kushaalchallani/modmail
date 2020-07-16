@@ -60,7 +60,7 @@ module.exports = class DirectMessageEvent extends BaseEvent {
                             message.author.send(embed3);
                             setTimeout(() => {
                                 openedTickets.delete(message.author.id);
-                            }, 10000);
+                            }, 3600000);
                         }
                     } catch (err) {
                         console.log(err);

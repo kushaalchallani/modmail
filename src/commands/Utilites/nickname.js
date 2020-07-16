@@ -21,6 +21,6 @@ module.exports = class extends BaseCommand {
       let member = message.guild.members.cache.get(user.id);
       
       await member.setNickname(nick).catch(err => message.channel.send({embed: {color: "RED", description: `Error: ${err}`}}));
-      return message.channel.send({embed: {color: "GREEN", description: `Successfully changed **${user.tag}** nickname to **${nick}**`}});
+      return message.channel.send({embed: {color: "GREEN", description: `<a:greentick:712212436924760094> Successfully changed **${user.tag}** nickname to **${nick}**`}});
   }
   }
