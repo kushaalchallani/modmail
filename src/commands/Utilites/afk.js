@@ -1,3 +1,4 @@
+const BaseCommand = require('../../utils/structures/BaseCommand');
 const Discord = require("discord.js");
 const color = require("../../events/message/colors.json")
 
