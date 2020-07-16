@@ -32,7 +32,7 @@ module.exports = class extends BaseCommand {
       const embed = new MessageEmbed()
       .setColor('GREEN')
       .setTitle('Slowmode')
-      .setDescription(`Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
+      .setDescription(`<a:tick:733258832456843275> Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
       .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 

@@ -25,7 +25,7 @@ module.exports = class extends BaseCommand {
     const done = new MessageEmbed()
         .setTitle("You are Verified")
         .setColor(color.green_light)
-        .setDescription("You are verified the server, You may now have access to the channels")
+        .setDescription("<a:tick:733258832456843275> You are verified the server, You may now have access to the channels")
         .setTimestamp()
        return message.channel.send(done).then(m => m.delete({ timeout: 2500}));}
   }

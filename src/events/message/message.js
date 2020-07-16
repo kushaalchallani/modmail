@@ -21,19 +21,6 @@ module.exports = class MessageEvent extends BaseEvent {
       if (command) {
         command.run(client, message, cmdArgs);
 
-
-      // Checks if the member has a nickname
-if(message.member.nickname) {
-  // Checks if the member who sent a message is currently set as AFK, if so reset the nickname
-    if(message.member.displayName.startsWith("[AFK]")){
-      message.reply("Welcome back!");
-      return message.member.setNickname(message.member.displayName.slice(5));
-     }
-    // Checks if the mentioned member is afk, if so reply with "That user is currently afk!"
-    if(message.mentions.members.first().displayName.startsWith("[AFK]"))
-    return message.reply("That user is currently afk!");
-  }
-
         
       }
     }
