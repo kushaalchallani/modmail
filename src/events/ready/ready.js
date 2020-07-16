@@ -6,8 +6,19 @@ module.exports = class ReadyEvent extends BaseEvent {
   }
   
     async run (client) {
-    client.user.setActivity("DM to Contact Staff", {type: "PLAYING"});
+    //client.user.setActivity("DM to Contact Staff", {type: "PLAYING"});
     console.log(client.user.tag + ' is now online.');
+
+    let statuses = [
+      `over ${client.users.cache.size} users!`,
+      `#🌐┃global-chat`,
+      `DM to Contact Staff`,
+    ]
+
+    setInterval(function() {
+      let status = statuses[Math.floor(Math.random() * statuses.length)];
+      lient.user.setActivity(status, {type: "Watching"});
+    }, 5000)
   }
   
 }
