@@ -15,10 +15,10 @@ module.exports = class ReadyEvent extends BaseEvent {
       `DM to Contact Staff`,
     ]
 
-    setInterval(function() {
-      let status = statuses[Math.floor(Math.random() * statuses.length)];
-      client.user.setActivity(status, {type: "Watching"});
-    }, 5000)
+    setInterval(function(){
+      let status = statuses[Math.floor(Math.random() * statuses.length)]
+      client.user.setActivity(status, {type: "WATCHING"});
+  }, 5000)
   }
   
 }
