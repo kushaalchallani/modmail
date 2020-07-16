@@ -4,11 +4,11 @@ const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('nickname', 'Changes nickname of a user', ['nick', 'setnick']);
+    super('nickname', 'Changes nickname of a user', ['nick', 'setnick', 'changenick']);
   }
 
   async run(client, message, args) {
-    if (!message.member.hasPermission(["MANAGE_GUILD", "ADMINISTRATOR"])) {
+    if (!message.member.hasPermission(["MANAGE_NICKNAME", "ADMINISTRATOR"])) {
         return message.channel.send({embed: {color: "RED", description: "You can't use this command!"}})
       }
       
