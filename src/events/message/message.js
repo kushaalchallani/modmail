@@ -1,5 +1,5 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
-const DISCORD_BOT_PREFIX = require('process.env')
+const DISCORD_BOT_PREFIX = require(process.env)
 
 module.exports = class MessageEvent extends BaseEvent {
   constructor() {
