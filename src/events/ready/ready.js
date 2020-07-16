@@ -9,10 +9,15 @@ module.exports = class ReadyEvent extends BaseEvent {
     //client.user.setActivity("DM to Contact Staff", {type: "PLAYING"});
     console.log(client.user.tag + ' is now online.');
 
+    let statuses = [
+      `over ${client.users.cache.size} users!`,
+      `#🌐┃global-chat`,
+      `DM to Contact Staff`,
+    ]
 
     setInterval(function(){
-      client.user.setActivity(`over ${client.users.cache.size} users!`, { type: "WATCHING"}),
-      client.user.setActivity(`#🌐┃global-chat`, { type: "PLAYING"})
+      let status = statuses[Math.floor(Math.random() * statuses.length)]
+      client.user.setActivity(status, {type: "WATCHING"});
   }, 5000)
   }
   
