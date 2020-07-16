@@ -15,8 +15,12 @@ module.exports = class ReadyEvent extends BaseEvent {
       { name: "KC Playz's Videos", options: { type: "WATCHING" }},
       { name: "KC Playz", options: { type: "LISTENING" }},
       { name: "the spammers", options: { type: "WATCHING" }},
-      { name: "🌐┃global-chat", options: { type: "STREAMING", URL: 'https://www.twitch.tv/kcplayzyt' }},
+      { name: "#🌐┃global-chat", options: { type: "STREAMING", URL: 'https://www.twitch.tv/kcplayzyt' }},
       { name: "giveaways", options: { type: "WATCHING"}},
+      { name: "#🌐┃global-chat", options: { type: "WATCHING"}},
+      { name: "KC Playz's Stream", options: { type: "WATCHING"}},
+      { name: "the latest news", options: { type: "LISTENING"}},
+      { name: "everyone", options: { type: "WATCHING"}},
       { name: `${client.users.cache.size}`, options: { type: "WATCHING"}},
       { name: "Rainbow 6 Siege", options: { type: "PLAYING" }},
 
@@ -25,7 +29,7 @@ module.exports = class ReadyEvent extends BaseEvent {
     setInterval(() => {
       const status = statuses[Math.floor(Math.random() * statuses.length)];
       client.user.setActivity(status.name, status.options);
-    }, 5000);
+    }, 20000);
   }
   
 }
