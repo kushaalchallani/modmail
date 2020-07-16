@@ -1,4 +1,5 @@
 const BaseEvent = require('../../utils/structures/BaseEvent');
+const DISCORD_BOT_PREFIX = require('process.env')
 
 module.exports = class MessageEvent extends BaseEvent {
   constructor() {
@@ -12,7 +13,7 @@ module.exports = class MessageEvent extends BaseEvent {
 
     if (!message.guild || message.author.bot) return;
 
-    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`${client.DISCORD_BOT_PREFIX}\`**.\nType **\`${client.DISCORD_BOT_PREFIX}help\`** for more info`);
+    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`${client.DISCORD_BOT_PREFIX}\`**.`);
 
     const prefix = message.content.match(mentionRegexPrefix) ?
         message.content.match(mentionRegexPrefix)[0] : client.DISCORD_BOT_PREFIX;
