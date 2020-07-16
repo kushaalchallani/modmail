@@ -3,7 +3,7 @@ const { Client } = require('discord.js');
 const { registerCommands, registerEvents } = require('./utils/registry');
 const client = new Client();
 
-(async () => {
+(async (message) => {
   client.commands = new Map();
   client.events = new Map();
   client.prefix = process.env.DISCORD_BOT_PREFIX;
