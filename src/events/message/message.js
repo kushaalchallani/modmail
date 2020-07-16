@@ -7,13 +7,6 @@ module.exports = class MessageEvent extends BaseEvent {
   
   async run(client, message) {
 
-    const mentionRegex = RegExp(`^<@!${client.user.id}>$`);
-    const mentionRegexPrefix = RegExp(`^<@!${client.user.id}> `);
-
-    if (!message.guild || message.author.bot) return;
-
-    if (message.content.match(mentionRegex)) message.channel.send(`My prefix for ${message.guild.name} is **\`>\`**.`);
-
     if (message.author.bot) return;
     if(message.channel.type === 'dm') {
       console.log('Inside message Event')
