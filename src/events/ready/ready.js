@@ -16,6 +16,7 @@ module.exports = class ReadyEvent extends BaseEvent {
       { name: "KC Playz", options: { type: "LISTENING" }},
       { name: "the spammers", options: { type: "WATCHING" }},
       { name: "#🌐┃global-chat", options: { type: "STREAMING", URL: 'https://www.twitch.tv/kcplayzyt' }},
+      { name: "latest covid-19 info", options: { type: "STREAMING", URL: 'https://www.twitch.tv/kcplayzyt' }},
       { name: "giveaways", options: { type: "WATCHING"}},
       { name: "#🌐┃global-chat", options: { type: "WATCHING"}},
       { name: "KC Playz's Stream", options: { type: "WATCHING"}},
@@ -23,6 +24,7 @@ module.exports = class ReadyEvent extends BaseEvent {
       { name: "everyone", options: { type: "WATCHING"}},
       { name: `${client.users.cache.size}`, options: { type: "WATCHING"}},
       { name: "Rainbow 6 Siege", options: { type: "PLAYING" }},
+      { name: "yes", options: { type: "PLAYING" }},
       { name: "", options: { type: "WATCHING"}},
 
     ]
