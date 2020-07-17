@@ -114,7 +114,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')){
 
     var role2 = message.guild.roles.cache.get('715107146127114321');
 
-    message.guild.member.ban(array2)
+    message.member.ban()
   }
 }
 
