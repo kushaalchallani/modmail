@@ -40,7 +40,7 @@ module.exports = class extends BaseCommand {
     .addField('By:', message.author, true)
     .addField('Expires:', rawTime)
     .addField('Reason:', reason)
-    message.guild.channels.cache.find(ch => ch.name === 'mod-log').send('log');
+    message.guild.channels.cache.find(ch => ch.name === 'mod-log').send(log);
 
     var embed = new Discord.MessageEmbed()
     .setTitle('You were muted!')
