@@ -2,6 +2,7 @@ require('dotenv').config();
 const { Client } = require('discord.js');
 const { registerCommands, registerEvents } = require('./utils/registry');
 const client = new Client();
+const ms = require('ms');
 
 (async () => {
   client.commands = new Map();
