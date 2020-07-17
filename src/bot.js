@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client } = require('discord.js');
+const { Client, MessageAttachment } = require('discord.js');
 const { registerCommands, registerEvents } = require('./utils/registry');
 const client = new Client();
 const ms = require('ms');
@@ -18,7 +18,7 @@ const ms = require('ms');
 const usersMap = new Map();
 const LIMIT = 7;
 const TIME = 10000;
-const DIFF = 5000;
+const DIFF = 3500;
 const UNMUTE = 10800000;
 
 client.on('message', message => {
@@ -44,6 +44,7 @@ client.on('message', message => {
       ++msgCount;
       if(parseInt(msgCount) === LIMIT) {
         const role = message.guild.roles.cache.get('715107146127114321')
+        message.member.roles.remove(['707197658007339069'])
         message.member.roles.add(role);
         message.channel.send('You have been muted.');
         setTimeout(() => {
@@ -74,7 +75,7 @@ client.on('message', message => {
 
 //anti swear starts
 
-var array = ['test', 'try', 'new'];
+var array = ['fuck', 'bitch', 'nigga', 'nigger', 'niggah', 'boobs', 'ass', 'tits', 'sex'];
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')){
   if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${w}`))){
