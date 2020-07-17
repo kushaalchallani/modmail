@@ -12,3 +12,34 @@ const client = new Client();
   await client.login(process.env.token);
 })();
 
+const usersMap = new Map();
+
+client.on('message', message => {
+  if(message.author.bot) return;
+
+  if(usersMap.has(message.author.id)) {
+    const userData = usersMap.get(message.author.id);
+    let msgCount = userData.msgCount;
+    if(parseInt(msgCount) === 7) {
+      const role = message.guild.role.cache.get('715107146127114321')
+      message.member.roles.add(role);
+      message.channel.send('You have been muted.');
+    } else {
+      msgCount++;
+      userData.msgCount = msgCount;
+      usersMap.set(message.author.id, userData);
+    }
+  }
+  else {
+    usersMap.set(message.author.id, {
+      msgCount: 1,
+      lastMessage: message,
+      timer: null
+    });
+    setTimeout(() => {
+      usersMap.delete(message.author.id);
+      console.log('Removed from map');
+    }, 10000);
+  }
+})
+
