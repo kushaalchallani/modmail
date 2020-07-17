@@ -16,9 +16,9 @@ const ms = require('ms');
 //anti spam starts
 
 const usersMap = new Map();
-const LIMIT = 7;
+const LIMIT = 6;
 const TIME = 10000;
-const DIFF = 3500;
+const DIFF = 3000;
 const UNMUTE = 10800000;
 
 client.on('message', message => {
