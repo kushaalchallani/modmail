@@ -22,10 +22,10 @@ module.exports = class ReadyEvent extends BaseEvent {
       { name: "KC Playz's Stream", options: { type: "WATCHING"}},
       { name: "the latest news", options: { type: "LISTENING"}},
       { name: "everyone", options: { type: "WATCHING"}},
-      { name: `${client.users.cache.size}`, options: { type: "WATCHING"}},
+      { name: `over ${client.users.cache.size} users`, options: { type: "WATCHING"}},
       { name: "Rainbow 6 Siege", options: { type: "PLAYING" }},
-      { name: "yes", options: { type: "PLAYING" }},
-      { name: "", options: { type: "WATCHING"}},
+      { name: "no", options: { type: "PLAYING" }},
+      { name: "Spotify", options: { type: "LISTENING"}},
 
     ]
 

@@ -20,7 +20,7 @@ module.exports = class DirectMessageEvent extends BaseEvent {
             .setColor(colors.green_light)
             .setTimestamp()
             .setFooter("Your message has been sent", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
-            .setDescription("Please wait momentarily while one of our staff will het back to you.");
+            .setDescription("Please wait momentarily while one of our staff will get back to you.");
               message.channel.send(embed5);
               openedTickets.set(message.author.id, message.guild);
               const channel = client.channels.cache.get(DESTINATION);
