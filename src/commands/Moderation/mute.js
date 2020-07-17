@@ -11,10 +11,10 @@ module.exports = class extends BaseCommand {
   async run(client, message, args) {        
     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You can\'t use that!');
 
-    const user = message.mentions.users.first();
+    var user = message.mentions.users.first();
     if(!user) return message.reply('You didn\'t mention anyone!');
 
-    const member;
+    var member;
 
     try {
         member = await message.guild.members.fetch(user);
@@ -25,16 +25,16 @@ module.exports = class extends BaseCommand {
     if(!member) return message.reply('They aren\'t in the server!');
     if(member.hasPermission('MANAGE_MESSAGES')) return message.reply('You cannot mute that person!');
 
-    const rawTime = args[1];
-    const time = ms(rawTime);
+    var rawTime = args[1];
+    var time = ms(rawTime);
     if(!time) return message.reply('You didn\'t specify a time!');
 
-    const reason = args.splice(2).join(' ');
+    var reason = args.splice(2).join(' ');
     if(!reason) return message.reply('You need to give a reason!');
 
-    const channel = message.guild.channels.cache.find(c => c.name === 'potato');
+    var channel = message.guild.channels.cache.find(c => c.name === 'Muted');
 
-    const log = new Discord.MessageEmbed()
+    var log = new Discord.MessageEmbed()
     .setTitle('User Muted')
     .addField('User:', user, true)
     .addField('By:', message.author, true)
@@ -42,7 +42,7 @@ module.exports = class extends BaseCommand {
     .addField('Reason:', reason)
     channel.send(log);
 
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
     .setTitle('You were muted!')
     .addField('Expires:', rawTime, true)
     .addField('Reason:', reason, true);
@@ -53,7 +53,7 @@ module.exports = class extends BaseCommand {
         console.warn(err);
     }
 
-    const role = message.guild.roles.cache.find(r => r.name === 'Muted');
+    var role = message.guild.roles.cache.find(r => r.name === 'Muted');
 
     member.roles.add(role);
 
