@@ -16,6 +16,7 @@ const usersMap = new Map();
 const LIMIT = 7;
 const TIME = 10000;
 const DIFF = 3000;
+const UNMUTE = 10800000;
 
 client.on('message', message => {
   if(message.author.bot) return;
@@ -42,6 +43,9 @@ client.on('message', message => {
         const role = message.guild.roles.cache.get('715107146127114321')
         message.member.roles.add(role);
         message.channel.send('You have been muted.');
+        setTimeout(() => {
+          message.member.roles.remove(role);
+        }, UNMUTE)
       } else {
         msgCount++;
         userData.msgCount = msgCount;
