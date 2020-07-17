@@ -12,6 +12,8 @@ const client = new Client();
   await client.login(process.env.token);
 })();
 
+//anti spam starts
+
 const usersMap = new Map();
 const LIMIT = 7;
 const TIME = 10000;
@@ -65,4 +67,26 @@ client.on('message', message => {
     });
   }
 })
+
+//anti spam ends
+
+
+
+//anti swear starts
+
+var array = ['test', 'try', 'new'];
+
+if(!message.member.hasPermission('MANAGE_MESSAGES')){
+  if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${word}`))){
+    message.delete();
+
+    var role2 = message.guild.roles.cache.get('715107146127114321');
+
+    message.member.roles.add(role2)
+
+    setTimeout(async() => {
+      message.member.roles.remove(role2)
+    }, ms('5m'))
+  }
+}
 
