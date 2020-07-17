@@ -48,6 +48,7 @@ module.exports = class extends BaseCommand {
     .addField('Reason:', reason, true);
 
     try {
+        member = await message.guild.members.fetch(user);
         message.user.send(embed);
     } catch(err) {
         console.warn(err);
