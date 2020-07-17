@@ -20,20 +20,6 @@ const LIMIT = 6;
 const TIME = 10000;
 const DIFF = 3000;
 const UNMUTE = 10800000;
-const REMOVE = ([
-  '707197658007339069',
-  '707133063741702166',
-  '707133501354541126',
-  '708620116291485758',
-  '708620116291485758',
-  '717660704617791520',
-  '717660767922683932',
-  '707134101722890250',
-  '707630691944366151',
-  '717728401334599690',
-  '707904015412756493',
-  '708591193461882880',
-])
 
 client.on('message', message => {
   if(message.author.bot) return;
@@ -103,18 +89,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')){
     setTimeout(async() => {
       message.member.roles.remove(role2)
     }, ms('5m'))
-  }
-}
-
-var array2 = ['nigga', 'nigger', 'niggah'];
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')){
-  if(array2.some(w2 => ` ${message.content.toLowerCase()} `.includes(` ${w2}`))){
-    message.delete();
-
-    var role2 = message.guild.roles.cache.get('715107146127114321');
-
-    message.member.ban()
   }
 }
 
