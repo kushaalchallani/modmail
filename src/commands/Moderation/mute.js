@@ -46,12 +46,8 @@ module.exports = class extends BaseCommand {
     .setTitle('You were muted!')
     .addField('Expires:', rawTime, true)
     .addField('Reason:', reason, true);
-
-    try {
-        message.user.send(embed);
-    } catch(err) {
-        console.warn(err);
-    }
+    message.user.send(embed);
+   
 
     var role = message.guild.roles.cache.find(r => r.name === 'Muted');
 
