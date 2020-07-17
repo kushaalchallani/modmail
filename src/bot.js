@@ -66,9 +66,8 @@ client.on('message', message => {
       timer: fn
     });
   }
-})
 
-//anti spam ends
+  //anti spam ends
 
 
 
@@ -89,4 +88,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')){
     }, ms('5m'))
   }
 }
+
+})
 
