@@ -76,7 +76,7 @@ client.on('message', message => {
 var array = ['test', 'try', 'new'];
 
 if(!message.member.hasPermission('MANAGE_MESSAGES')){
-  if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${word}`))){
+  if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${array}`))){
     message.delete();
 
     var role2 = message.guild.roles.cache.get('715107146127114321');
