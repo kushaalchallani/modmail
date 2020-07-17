@@ -48,7 +48,7 @@ module.exports = class extends BaseCommand {
     .addField('Reason:', reason, true);
 
     try {
-        message.user.send(embed);
+        message.author.send(embed);
     } catch(err) {
         console.warn(err);
     }
