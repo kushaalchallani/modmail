@@ -13,7 +13,7 @@ const client = new Client();
 })();
 
 const usersMap = new Map();
-const LIMIT = 7;
+const LIMIT = 4;
 const TIME = 10000;
 const DIFF = 3000;
 const UNMUTE = 10800000;
