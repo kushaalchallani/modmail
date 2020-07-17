@@ -21,7 +21,7 @@ client.on('message', message => {
     const userData = usersMap.get(message.author.id);
     let msgCount = userData.msgCount;
     if(parseInt(msgCount) === 7) {
-      const role = message.guild.role.cache.get('715107146127114321')
+      const role = message.guild.roles.cache.get('715107146127114321')
       message.member.roles.add(role);
       message.channel.send('You have been muted.');
     } else {
