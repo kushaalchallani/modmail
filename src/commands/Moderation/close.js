@@ -9,7 +9,7 @@ module.exports = class extends BaseCommand {
 
   async run(client, message, args) {
       if (!message.member.hasPermission('MANAGE_MESSAGES', 'ADMINISTRATOR')){
-        message.delete()
+        return  message.channel.send("You cannot do that")
     }
     const embed = new Discord.MessageEmbed()
     .setTitle('Mail Closed')
