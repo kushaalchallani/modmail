@@ -43,7 +43,7 @@ module.exports = class DirectMessageEvent extends BaseEvent {
                         if (choice.emoji.id === ACCEPT) {
                             await handleCollector(channel, message);
                             const embed2 = new MessageEmbed()
-                            .setColor(colors.blue_dark)
+                            .setColor('BLUE')
                             .setTitle("Mail Closed")
                             .setTimestamp()
                             .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
