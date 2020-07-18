@@ -44,7 +44,7 @@ client.on('message', message => {
       ++msgCount;
       if(parseInt(msgCount) === LIMIT) {
         const role = message.guild.roles.cache.get('715107146127114321')
-        message.member.roles.remove(REMOVE)
+        message.member.roles.remove()
         message.member.roles.add(role);
         message.channel.send('You have been muted.');
         setTimeout(() => {
@@ -78,7 +78,7 @@ client.on('message', message => {
 
 var array = ['fuck', 'bitch', 'boobs', 'ass', 'tits', 'sex'];
 
-if(!message.member.hasPermission('MANAGE_MESSAGES')){
+if(!message.member.hasPermissions('MANAGE_MESSAGES')){
   if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${w}`))){
     message.delete();
 
