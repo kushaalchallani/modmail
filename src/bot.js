@@ -72,25 +72,5 @@ client.on('message', message => {
 
   //anti spam ends
 
-
-
-//anti swear starts
-
-var array = ['fuck', 'bitch', 'boobs', 'ass', 'tits', 'sex'];
-
-if(!message.member.hasPermission('MANAGE_MESSAGES')){
-  if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${w}`))){
-    message.delete();
-
-    var role2 = message.guild.roles.cache.get('715107146127114321');
-
-    message.member.roles.add(role2)
-
-    setTimeout(async() => {
-      message.member.roles.remove(role2)
-    }, ms('5m'))
-  }
-}
-
 })
 
