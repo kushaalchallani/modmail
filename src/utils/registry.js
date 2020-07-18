@@ -41,7 +41,7 @@ async function registerEvents(client, dir = '') {
   }
 }
 
-mongoose.connect("",{
+mongoose.connect("mongodb+srv://kcplayz:rakshaa02@cluster0.k0uop.mongodb.net/Data?retryWrites=true&w=majority",{
   useUnifiedTopology: true,
   useNewUrlParser: true,
 })
