@@ -3,6 +3,7 @@ const { Client, MessageAttachment } = require('discord.js');
 const { registerCommands, registerEvents } = require('./utils/registry');
 const client = new Client();
 const ms = require('ms');
+const mongoose = require('mongoose')
 
 (async () => {
   client.commands = new Map();
@@ -12,5 +13,10 @@ const ms = require('ms');
   await registerEvents(client, '../events');
   await client.login(process.env.token);
 })();
+
+mongoose.connect("mongodb+srv://kcplayz:rakshaa02@cluster0.k0uop.mongodb.net/Data?retryWrites=true&w=majority",{
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+})
 
 
