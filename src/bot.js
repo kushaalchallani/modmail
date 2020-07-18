@@ -78,7 +78,7 @@ client.on('message', message => {
 
 var array = ['fuck', 'bitch', 'boobs', 'ass', 'tits', 'sex'];
 
-if(!message.member.hasPermissions('MANAGE_MESSAGES')){
+if(!message.member.hasPermission('MANAGE_MESSAGES')){
   if(array.some(w => ` ${message.content.toLowerCase()} `.includes(` ${w}`))){
     message.delete();
 
