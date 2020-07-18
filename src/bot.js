@@ -16,7 +16,7 @@ const ms = require('ms');
 //anti spam starts
 
 const usersMap = new Map();
-const LIMIT = 6;
+const LIMIT = 5;
 const TIME = 10000;
 const DIFF = 3000;
 const UNMUTE = 10800000;
@@ -41,7 +41,6 @@ client.on('message', message => {
       usersMap.set(message.author.id, userData);
     }
     else {
-      ++msgCount;
       if(parseInt(msgCount) === LIMIT) {
         const role = message.guild.roles.cache.get('715107146127114321')
         message.member.roles.remove()
