@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs').promises;
 const BaseCommand = require('./structures/BaseCommand');
 const BaseEvent = require('./structures/BaseEvent');
+const mongoose = require('mongoose')
 
 async function registerCommands(client, dir = '') {
   const filePath = path.join(__dirname, dir);
@@ -39,6 +40,11 @@ async function registerEvents(client, dir = '') {
     }
   }
 }
+
+mongoose.connect("mongodb+srv://kcplayz:rakshaa02@cluster0.snjkw.mongodb.net/Data?retryWrites=true&w=majority",{
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+})
 
 
 module.exports = { 
