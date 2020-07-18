@@ -4,10 +4,11 @@ const color = require("../../events/message/colors.json")
 
 module.exports = class extends BaseCommand {
   constructor() {
-    super('close', 'closes the mail', []);
+    super('unmute', 'closes the mail', []);
   }
 
   async run(client, message, args) {
+
     if (!message.member.hasPermission("MANAGE_ROLES")) {
         return message.channel.send(
           "Sorry but you do not have permission to unmute anyone"
