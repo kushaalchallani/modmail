@@ -14,6 +14,7 @@ module.exports = class extends BaseCommand {
     const embed = new Discord.MessageEmbed()
     .setTitle('Mail Closed')
     .setDescription('Mail has been closed.')
+    .setTimestamp
     .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
     message.channel.send(embed).then(m => m.delete(5000));
   }
