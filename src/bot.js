@@ -18,7 +18,7 @@ const ms = require('ms');
 const usersMap = new Map();
 const LIMIT = 5;
 const TIME = 10000;
-const DIFF = 3000;
+const DIFF = 2500;
 const UNMUTE = 10800000;
 
 client.on('message', message => {
