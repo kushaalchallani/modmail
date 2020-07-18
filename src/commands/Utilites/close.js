@@ -14,9 +14,10 @@ module.exports = class extends BaseCommand {
 
     const embed = new Discord.MessageEmbed()
     .setTitle('Mail Closed')
-    .setDescription('Mail has been closed.')
+    .setColor(color.green_bright)
+    .setDescription('I have cleared all the messages in this channel.')
     .setTimestamp()
-    .setFooter("KC's Universe | 582182796626493444", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
+    .setFooter("KC's Universe", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
     message.channel.send(embed).then(m => m.delete({ timeout: 2500}))
     
     message.channel.bulkDelete(100, true)
