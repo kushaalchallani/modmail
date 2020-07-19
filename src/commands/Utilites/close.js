@@ -12,7 +12,7 @@ module.exports = class extends BaseCommand {
         return  message.channel.send("You cannot do that")
     }
 
-    message.channel.send(`
+   async (message.channel.send(`
     Closing the mail....`).then((msg) => {
           const _ = new Discord.MessageEmbed()
             .setTitle("Closed the mail")
@@ -20,7 +20,7 @@ module.exports = class extends BaseCommand {
             .setColor("BLUE");
          await msg.edit(_);
          await msg.edit("\u200B");
-        }).then(m => m.delete({ timeout: 2500}));
+        }).then(m => m.delete({ timeout: 2500})));
     
     message.channel.bulkDelete(100, true)
 
