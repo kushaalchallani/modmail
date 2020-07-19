@@ -19,8 +19,20 @@ module.exports = class extends BaseCommand {
     .setTimestamp()
     .setFooter("KC's Universe", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
     message.channel.send(embed).then(m => m.delete({ timeout: 2500}))
+
+    message.channel.send(`
+    Closing the mail....`).then((msg) => {
+          const _ = new Discord.MessageEmbed()
+            .setTitle("Closed the mail")
+            .setDescription('test')
+            .setColor("BLUE");
+          msg.edit(_);
+          msg.edit("\u200B");
+        }).then(m => m.delete({ timeout: 2500}));
     
     message.channel.bulkDelete(100, true)
     .catch(err => message.channel.send(`Something went wrong... ${err}`));
+
+
   }
   }

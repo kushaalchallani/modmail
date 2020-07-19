@@ -3,7 +3,6 @@ const path = require('path');
 const fs = require('fs').promises;
 const BaseCommand = require('./structures/BaseCommand');
 const BaseEvent = require('./structures/BaseEvent');
-const mongoose = require('mongoose')
 
 async function registerCommands(client, dir = '') {
   const filePath = path.join(__dirname, dir);
