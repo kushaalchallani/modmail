@@ -9,7 +9,7 @@ module.exports = class extends BaseCommand {
 
   async run(client, message, args) {
     message.delete()
-    
+
       if (!message.member.hasPermission('MANAGE_MESSAGES', 'ADMINISTRATOR')){
         return  message.channel.send("You cannot do that")
     }
@@ -24,9 +24,9 @@ module.exports = class extends BaseCommand {
           msg.edit("\u200B");
         })
 
-        await message.delete({ timeout: 5000 });
+        await message.delete({ timeout: 2500 });
     
-    message.channel.bulkDelete(100, true)
+        message.channel.bulkDelete(100, true)
 
   }
   }
