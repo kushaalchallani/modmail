@@ -11,15 +11,7 @@ module.exports = class extends BaseCommand {
       if (!message.member.hasPermission('MANAGE_MESSAGES', 'ADMINISTRATOR')){
         return  message.channel.send("You cannot do that")
     }
-
-    const embed = new Discord.MessageEmbed()
-    .setTitle('Mail Closed')
-    .setColor(color.green_bright)
-    .setDescription('I have cleared all the messages in this channel.')
-    .setTimestamp()
-    .setFooter("KC's Universe", message.client.guilds.cache.get("582182796626493444").iconURL({ dynamic: true, format: 'png' }))
-    message.channel.send(embed).then(m => m.delete({ timeout: 2500}))
-
+    
     message.channel.send(`
     Closing the mail....`).then((msg) => {
           const _ = new Discord.MessageEmbed()
