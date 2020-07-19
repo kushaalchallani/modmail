@@ -27,7 +27,7 @@ module.exports = class extends BaseCommand {
     var reason = args.splice(1).join(' ');
     if(!reason) return msg.reply('You need to give a reason!');
 
-    var channel = msg.guild.channels.cache.find(c => c.name === 'potato');
+    var channel = msg.guild.channels.cache.find(c => c.name === 'mod-log');
 
     var log = new Discord.MessageEmbed()
     .setTitle('User Kicked')
