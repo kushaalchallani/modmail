@@ -11,32 +11,23 @@ module.exports = class extends BaseCommand {
 
   async run(client, message, args) {
     message.delete()
-    if (!message.member.permissions.any(["ADMINISTRATOR", "MANAGE_CHANNELS"])) {
-      return message.channel.send("Oopsie, you don't have any rights to do this.");
-    }
-    
-    let channel = message.mentions.channels.first(),
-        time = args.slice(1).join(" ");
-    
-    if (!channel) time = args.join(" "), channel = message.channel;
-    // If the user doesn't includes the channel.
-    
-    if (message.flags[0] === "off") {
-      channel.setRateLimitPerUser(0);
-      return message.channel.send(`<#${channel.id}> slowmode has been deactivated.`);
-    }
-    
-    if (!time) return message.channel.send("Please includes the time format.");
-    
-    let convert = ms(time); // This will results the milliseconds.
-    let toSecond = Math.floor(convert / 1000); // This will convert the ms to s. (seconds)
-    
-    if (!toSecond || toSecond == undefined) return message.channel.send("Please insert the valid time format!");
-    
-    if (toSecond > 21600) return message.channel.send("Timer should be less than or equal to 6 hours.");
-    else if (toSecond < 1) return message.channel.send("Timer should be more than or equal to 1 second.");
-    
-    await channel.setRateLimitPerUser(toSecond);
+    if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command");
+
+    // The bot doesn't have permission
+    if (!message.guild.me.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("I don't have permissions to perform this command");
+
+        if (!args[0])
+        return message.channel.send(
+          `You did not specify the time in seconds you wish to set this channel's slow mode too!`
+        );
+      if (isNaN(args[0])) return message.channel.send(`That is not a number!`);
+      let reason = message.content.slice(
+        client.prefix.length + 9 + args[0].length + 1
+      );
+      if (!reason) {
+        reason == "No reason provided!";
+      }
+      message.channel.setRateLimitPerUser(args[0], reason);
 
       const embed = new MessageEmbed()
       .setColor('GREEN')
