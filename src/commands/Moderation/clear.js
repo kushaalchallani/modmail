@@ -32,5 +32,7 @@ module.exports = class extends BaseCommand {
 
     message.channel.bulkDelete(deleteAmount, true)
     .catch(err => message.channel.send(`Something went wrong... ${err}`));
+
+    message.channel.send(`I have cleared ${deleteAmount} messages`)
   }
   }

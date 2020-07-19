@@ -20,7 +20,7 @@ module.exports = class extends BaseCommand {
             .setColor("BLUE");
           msg.edit(_);
           msg.edit("\u200B");
-        }).then(_ => _.delete({ timeout: 5000 }))
+        }).then(m => m.delete({ timeout: 2500}));
     
     message.channel.bulkDelete(100, true)
 
