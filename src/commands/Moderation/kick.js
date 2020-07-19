@@ -7,7 +7,7 @@ module.exports = class extends BaseCommand {
     super('kick', 'Kicks a user from the server', ['k']);
   }
 
-  async run(client, message, args) {
+  async run(client, msg, args) {
     if(!msg.member.hasPermission('KICK_MEMBERS')) return msg.reply('You can\'t use that!');
 
     var user = msg.mentions.users.first();
