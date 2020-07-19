@@ -8,6 +8,8 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, message, args) {
+    message.delete()
+    
       if (!message.member.hasPermission('MANAGE_MESSAGES', 'ADMINISTRATOR')){
         return  message.channel.send("You cannot do that")
     }
