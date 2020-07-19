@@ -34,7 +34,7 @@ module.exports = class extends BaseCommand {
     .addField('User:', user, true)
     .addField('By:', msg.author, true)
     .addField('Reason:', reason)
-    message.channel.send(log);
+    msg.channel.send(log);
 
     var embed = new Discord.MessageEmbed()
     .setTitle('You were kicked!')
