@@ -22,7 +22,7 @@ module.exports = class extends BaseCommand {
           msg.edit("\u200B");
         })
 
-        await _.delete({ timeout: 5000 });
+        await message.delete({ timeout: 5000 });
     
     message.channel.bulkDelete(100, true)
 
