@@ -24,14 +24,15 @@ module.exports = class extends BaseCommand {
     }
 
     if(member){
-        if(member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You cannot ban this person!');
+        if(member.hasPermission('MANAGE_MESSAGES')) return msg.channel.send('You cannot ban this person!').then(m => m.delete({ timeout: 5000}));
     }
 
     var reason = args.splice(1).join(' ');
-    if(!reason) return msg.reply('You need to give a reason!');
+    if(!reason) return msg.channel.send('You need to give a reason!').then(m => m.delete({ timeout: 5000}));
 
     var log = new Discord.MessageEmbed()
     .setTitle('User Banned')
+    .setColor(color.red_bright)
     .addField('User:', user, true)
     .addField('By:', msg.author, true)
     .addField('Reason:', reason)
@@ -39,7 +40,8 @@ module.exports = class extends BaseCommand {
 
     var embed = new Discord.MessageEmbed()
     .setTitle('You were banned!')
-    .setDescription(reason);
+    .setColor(color.red_bright)
+    .setDescription(`You were banned from for ${reason}. If you feel this punishment is unjustified, click [here](https://forms.gle/gh7eXLBwN5h5hZhP7) `);
 
     try {
         await user.send(embed);
