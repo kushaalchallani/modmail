@@ -51,6 +51,9 @@ module.exports = class extends BaseCommand {
 
     msg.guild.members.ban(user); // This should not be user.id like I said in my video. I made a mistake. Sorry! :)
 
-    msg.channel.send(`**${user}** has been banned by **${msg.author}**!`);
+    var ban = new Discord.MessageEmbed()
+    .setDescription(`<a:tick:733258832456843275> **${user}** has been banned!`)
+    .setColor(color.red_bright)
+    msg.channel.send(ban);
   }
   }
