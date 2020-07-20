@@ -13,21 +13,6 @@ module.exports = class extends BaseCommand {
     message.delete()
     if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command");
 
-    if (!message.member.permissions.any(["ADMINISTRATOR", "MANAGE_CHANNELS"])) {
-      return message.channel.send("Oopsie, you don't have any rights to do this.");
-    }
-    
-    let channel = message.mentions.channels.first(),
-        time = args.slice(1).join(" ");
-    
-    if (!channel) time = args.join(" "), channel = message.channel;
-    // If the user doesn't includes the channel.
-    
-    if (message.flags[0] === "off") {
-      channel.setRateLimitPerUser(0);
-      return message.channel.send(`<#${channel.id}> slowmode has been deactivated.`);
-    }
-    
     if (!args[0])
     return message.channel.send(
       `You did not specify the time in seconds you wish to set this channel's slow mode too!`
