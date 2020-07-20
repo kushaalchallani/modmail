@@ -24,7 +24,7 @@ module.exports = class extends BaseCommand {
 
     let deleteAmount;
     if (parseInt(args[0]) > 100) {
-      return message.reply('You can only delete 100 messages at a time!')
+      return message.channel.send('You can only delete 100 messages at a time!').then(m => m.delete({ timeout: 5000}));
     } else {
         deleteAmount = parseInt(args[0]);
     }
@@ -33,6 +33,6 @@ module.exports = class extends BaseCommand {
     message.channel.bulkDelete(deleteAmount, true)
     .catch(err => message.channel.send(`Something went wrong... ${err}`));
 
-    message.channel.send(`**Successfully** cleared **${deleteAmount}** messages`)
+    message.channel.send(`**Successfully** cleared **${deleteAmount}** messages`).then(m => m.delete({ timeout: 5000}));
   }
   }
