@@ -13,13 +13,13 @@ module.exports = class extends BaseCommand {
 
     message.delete()
     
-    if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command");
+    if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command").then(m => m.delete({ timeout: 5000}));
 
     if (!args[0])
     return message.channel.send(
       `You did not specify the time in seconds you wish to set this channel's slow mode too!`
-    );
-  if (isNaN(args[0])) return message.channel.send(`That is not a number!`);
+    ).then(m => m.delete({ timeout: 5000}));
+  if (isNaN(args[0])) return message.channel.send(`That is not a number!`).then(m => m.delete({ timeout: 5000}));
   let reason = message.content.slice(
     client.prefix.length + 9 + args[0].length + 1
   );

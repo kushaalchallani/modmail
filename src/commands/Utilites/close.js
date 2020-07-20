@@ -11,7 +11,7 @@ module.exports = class extends BaseCommand {
     message.delete()
 
       if (!message.member.hasPermission('MANAGE_MESSAGES', 'ADMINISTRATOR')){
-        return  message.channel.send("You cannot do that")
+        return  message.channel.send("You cannot do that").then(m => m.delete({ timeout: 2000}));
     }
 
    message.channel.send(`
@@ -22,9 +22,7 @@ module.exports = class extends BaseCommand {
             .setColor("BLUE");
           msg.edit(_);
           msg.edit("\u200B");
-        })
-
-        await message.delete({ timeout: 2500 });
+        }).then(m => m.delete({ timeout: 2000}));
     
         message.channel.bulkDelete(100, true)
 
