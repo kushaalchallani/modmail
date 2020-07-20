@@ -10,7 +10,9 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, message, args) {
+
     message.delete()
+    
     if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command");
 
     if (!args[0])
