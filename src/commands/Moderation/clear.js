@@ -10,6 +10,7 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, message, args) {
+    
     const messageArray = message.content.split(' ');
     const args = messageArray.slice(1);
   
