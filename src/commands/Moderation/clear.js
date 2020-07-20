@@ -24,7 +24,7 @@ module.exports = class extends BaseCommand {
 
     let deleteAmount;
     if (parseInt(args[0]) > 100) {
-        deleteAmount = 100;
+      return message.reply('You can only delete 100 messages at a time!')
     } else {
         deleteAmount = parseInt(args[0]);
     }
