@@ -21,8 +21,8 @@ module.exports = class extends BaseCommand {
             .setDescription('I have cleared the messages')
             .setColor("BLUE");
           msg.edit(_);
-          msg.edit("\u200B");
-        }).then(m => m.delete({ timeout: 2000}));
+          msg.edit("\u200B").then(m => m.delete({ timeout: 2000}));
+        })
     
         message.channel.bulkDelete(100, true)
 
