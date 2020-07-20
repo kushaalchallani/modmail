@@ -19,7 +19,7 @@ module.exports = class extends BaseCommand {
     );
   if (isNaN(args[0])) return message.channel.send(`That is not a number!`);
   let reason = message.content.slice(
-    bot.prefix.length + 9 + args[0].length + 1
+    client.prefix.length + 9 + args[0].length + 1
   );
   if (!reason) {
     reason == "No reason provided!";
