@@ -21,7 +21,7 @@ module.exports = class extends BaseCommand {
     if (!channel) time = args.join(" "), channel = message.channel;
     // If the user doesn't includes the channel.
     
-    if (message.flags[0] === "off") {
+    if (!message.flags[0] === "off") {
       channel.setRateLimitPerUser(0);
       return message.channel.send(`<#${channel.id}> slowmode has been deactivated.`);
     }
