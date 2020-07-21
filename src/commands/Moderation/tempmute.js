@@ -44,6 +44,8 @@ module.exports = class extends BaseCommand {
 
     var embed = new Discord.MessageEmbed()
     .setTitle('You were muted!')
+    .setColor(color.orange)
+    .setDescription(`You were muted from **${message.guild.name}** for **${reason}**. If you feel this punishment is unjustified, DM KC's Utilites`)
     .addField('Expires:', rawTime, true)
     .addField('Reason:', reason, true);
 
@@ -61,7 +63,12 @@ module.exports = class extends BaseCommand {
         member.roles.remove(role);
     }, time);
 
-    message.channel.send(`**${user}** has been muted by **${message.author}** for **${rawTime}**!`);
+
+    var embed2 = new Discord.MessageEmbed()
+    .setDescription(`<a:tick:733258832456843275> **${user}** has successfully been muted for **${rawTime}**!`)
+    .setColor(color.green_bright)
+    msg.channel.send(embed2);
+    message.channel.send(embed2);
     
   }
   }

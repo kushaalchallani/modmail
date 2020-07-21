@@ -49,9 +49,18 @@ module.exports = class extends BaseCommand {
       }
 
       user.roles.add(muterole)
-    
-      await message.channel.send(`You muted **${message.mentions.users.first().username}** For \`${reason}\``)
+      
+      var embed2 = new Discord.MessageEmbed()
+      .setDescription(`<a:tick:733258832456843275> **${user}** has successfully been hardmuted! `)
+      .setColor(color.green_bright)
+      msg.channel.send(embed2);
+      await message.channel.send(embed2)
           
-          user.send(`You are muted in **${message.guild.name}** For \`${reason}\``)
+      var embed3 = new Discord.MessageEmbed()
+      .setTitle('You were banned!')
+      .setColor(color.red_bright)
+      .setDescription(`You were hardmuted in **${message.guild.name}** for **${reason}**. If you feel this punishment is unjustified, DM KC's Utilites`);
+          
+      user.send(embed3)
   }
   }

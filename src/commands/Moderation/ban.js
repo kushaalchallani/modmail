@@ -24,11 +24,11 @@ module.exports = class extends BaseCommand {
     }
 
     if(member){
-        if(member.hasPermission('MANAGE_MESSAGES')) return msg.channel.send('You cannot ban this person!').then(m => m.delete({ timeout: 5000}));
+        if(member.hasPermission('MANAGE_MESSAGES')) return msg.channel.send('You cannot ban this person!').then(m => m.delete({ timeout: 3000}));
     }
 
     var reason = args.splice(1).join(' ');
-    if(!reason) return msg.channel.send('You need to give a reason!').then(m => m.delete({ timeout: 5000}));
+    if(!reason) return msg.channel.send('You need to give a reason!').then(m => m.delete({ timeout: 3000}));
 
     var log = new Discord.MessageEmbed()
     .setTitle('User Banned')
@@ -41,7 +41,7 @@ module.exports = class extends BaseCommand {
     var embed = new Discord.MessageEmbed()
     .setTitle('You were banned!')
     .setColor(color.red_bright)
-    .setDescription(`You were banned from for ${reason}. If you feel this punishment is unjustified, click [here](https://forms.gle/gh7eXLBwN5h5hZhP7) `);
+    .setDescription(`You were banned from **${message.guild.name}** for **${reason}**. If you feel this punishment is unjustified, click [here](https://forms.gle/gh7eXLBwN5h5hZhP7) `);
 
     try {
         await user.send(embed);
@@ -52,8 +52,8 @@ module.exports = class extends BaseCommand {
     msg.guild.members.ban(user); // This should not be user.id like I said in my video. I made a mistake. Sorry! :)
 
     var ban = new Discord.MessageEmbed()
-    .setDescription(`<a:tick:733258832456843275> **${user}** has been banned!`)
-    .setColor(color.red_bright)
+    .setDescription(`<a:tick:733258832456843275> **${user}** has successfully been banned from the server! `)
+    .setColor(color.green_bright)
     msg.channel.send(ban);
   }
   }

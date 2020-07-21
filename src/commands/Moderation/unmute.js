@@ -36,9 +36,18 @@ module.exports = class extends BaseCommand {
 
     user.roles.remove(muterole)
     
-    await message.channel.send(`**${message.mentions.users.first().username}** is unmuted`)
+    var embed2 = new Discord.MessageEmbed()
+    .setDescription(`<a:tick:733258832456843275> **${user}** has successfully been unmuted! `)
+    .setColor(color.green_bright)
+    msg.channel.send(embed2);
+    await message.channel.send(embed2)
+
+    var embed3 = new Discord.MessageEmbed()
+      .setTitle('You were banned!')
+      .setColor(color.red_bright)
+      .setDescription(`You were unmuted from **${message.guild.name}**. Do not repeat or you will be kicked`);
     
-    user.send(`You are now unmuted from **${message.guild.name}**`)
+    user.send(embed3)
 
   }
   }

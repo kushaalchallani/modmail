@@ -31,23 +31,29 @@ module.exports = class extends BaseCommand {
 
     var log = new Discord.MessageEmbed()
     .setTitle('User Kicked')
+    .setColor(color.red_bright)
     .addField('User:', user, true)
     .addField('By:', msg.author, true)
     .addField('Reason:', reason)
     msg.guild.channels.cache.find(ch => ch.name === 'mod-log').send(log);
 
-    var embed = new Discord.MessageEmbed()
-    .setTitle('You were kicked!')
-    .setDescription(reason);
+    var embed3 = new Discord.MessageEmbed()
+    .setTitle('You were banned!')
+    .setColor(color.red_bright)
+    .setDescription(`You were kicked from **${message.guild.name}** for **${reason}**. If you feel this punishment is unjustified, rejoin the server and create a ticket`);
 
     try {
-        await user.send(embed);
+        await user.send(embed3);
     } catch(err) {
         console.warn(err);
     }
 
     member.kick(reason);
 
-    msg.channel.send(`**${user}** has been kicked by **${msg.author}**!`);
+    
+    var embed2 = new Discord.MessageEmbed()
+    .setDescription(`<a:tick:733258832456843275> **${user}** has successfully been kicked from the server! `)
+    .setColor(color.green_bright)
+    msg.channel.send(embed2);
   }
   }

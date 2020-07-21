@@ -26,6 +26,9 @@ module.exports = class extends BaseCommand {
   if (!reason) {
     reason == "No reason provided!";
   }
+
+  if (message.content == "yes") message.channel.send(yourembed) 
+
   message.channel.setRateLimitPerUser(args[0], reason);
 
       const embed = new MessageEmbed()
