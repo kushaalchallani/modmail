@@ -8,10 +8,10 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, msg, args) {
-    if(!msg.member.hasPermission('KICK_MEMBERS')) return msg.reply('You can\'t use that!');
+    if(!msg.member.hasPermission('KICK_MEMBERS')) return msg.channel.send('You can\'t use that!');
 
     var user = msg.mentions.users.first();
-    if(!user) return msg.reply('You didn\'t mention anyone!');
+    if(!user) return msg.channel.send('You didn\'t mention anyone!');
 
     var member;
 
@@ -21,11 +21,11 @@ module.exports = class extends BaseCommand {
         member = null;
     }
 
-    if(!member) return msg.reply('They aren\'t in the server!');
-    if(member.hasPermission('MANAGE_MESSAGES')) return msg.reply('You cannot kick this person!');
+    if(!member) return msg.channel.send('They aren\'t in the server!');
+    if(member.hasPermission('MANAGE_MESSAGES')) return msg.channel.send('You cannot kick this person!');
 
     var reason = args.splice(1).join(' ');
-    if(!reason) return msg.reply('You need to give a reason!');
+    if(!reason) return msg.channel.send('You need to give a reason!');
 
     var channel = msg.guild.channels.cache.find(c => c.name === 'mod-log');
 

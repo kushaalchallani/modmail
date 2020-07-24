@@ -9,10 +9,10 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, message, args) {        
-    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You can\'t use that!');
+    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You can\'t use that!');
 
     var user = message.mentions.users.first();
-    if(!user) return message.reply('You didn\'t mention anyone!');
+    if(!user) return message.channel.send('You didn\'t mention anyone!');
 
     var member;
 
@@ -22,15 +22,15 @@ module.exports = class extends BaseCommand {
         member = null;
     }
 
-    if(!member) return message.reply('They aren\'t in the server!');
-    if(member.hasPermission('MANAGE_MESSAGES')) return message.reply('You cannot mute that person!');
+    if(!member) return message.channel.send('They aren\'t in the server!');
+    if(member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You cannot mute that person!');
 
     var rawTime = args[1];
     var time = ms(rawTime);
-    if(!time) return message.reply('You didn\'t specify a time!');
+    if(!time) return message.channel.send('You didn\'t specify a time!');
 
     var reason = args.splice(2).join(' ');
-    if(!reason) return message.reply('You need to give a reason!');
+    if(!reason) return message.channel.send('You need to give a reason!');
 
     var channel = message.guild.channels.cache.find(c => c.name === 'Muted');
 
