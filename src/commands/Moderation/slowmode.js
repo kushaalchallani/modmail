@@ -13,19 +13,14 @@ module.exports = class extends BaseCommand {
 
     message.delete()
 
-    const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
-    message.channel.awaitMessages(filter, {max: 1, time: 30000})
-    .then(collected => {
-        const msg = collected.first()
-        if(msg.content.toLowerCase() === "yes") {
-            message.channel.send(embed)
-        } else {
-            if(msg.content.toLowerCase() === "no")
-                message.channel.send('Cancelled command.')
-        }
-    })
-    
     if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command").then(m => m.delete({ timeout: 5000}));
+
+    const embed = new Discord.MessageEmbed()
+    .setColor('GREEN')
+    .setTitle('Slowmode')
+    .setDescription(`:tick: Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
+    .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
+    .setTimestamp()
 
     if (!args[0])
     return message.channel.send(
@@ -38,14 +33,18 @@ module.exports = class extends BaseCommand {
   if (!reason) {
     reason == "No reason provided!";
   }
-
-  message.channel.setRateLimitPerUser(args[0], reason);
-
-      const embed = new Discord.MessageEmbed()
-      .setColor('GREEN')
-      .setTitle('Slowmode')
-      .setDescription(`:tick: Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
-      .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
-      .setTimestamp()
+      
+    const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
+    message.channel.awaitMessages(filter, {max: 1, time: 30000})
+    .then(collected => {
+        const msg = collected.first()
+        if(msg.content.toLowerCase() === "yes") {
+          message.channel.setRateLimitPerUser(args[0], reason);
+          message.channel.send(embed)
+        } else {
+            if(msg.content.toLowerCase() === "no")
+                message.channel.send('Cancelled command.')
+        }
+    })
   }
   }
