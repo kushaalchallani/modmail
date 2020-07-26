@@ -10,7 +10,8 @@ module.exports = class extends BaseCommand {
   }
 
   async run(client, message, args) {
-    
+    message.delete()
+
     if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command").then(m => m.delete({ timeout: 5000}));
 
 
@@ -30,14 +31,14 @@ module.exports = class extends BaseCommand {
       const confirm = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('Confirmation')
-      .setDescription(`**${message.author}**, you are about to change the slowmode to **${args[0]} seconds**. Type \`yes\` to change the slowmode of this channel.\n\nTo cancel the command type \`no\``)
+      .setDescription(`**${message.author}**, you are about to change the slowmode to **${args[0]} seconds**. Type **\`yes\`** to change the slowmode of this channel.\n\nTo cancel the command type **\`no\`**`)
 
-      message.channel.send(confirm)
+      message.channel.send(confirm).then(m => m.delete({ timeout: 5000}));
 
       const embed = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setTitle('Slowmode')
-      .setDescription(`:tick: Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
+      .setDescription(`<a:tick:733258832456843275>  Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
       .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 
