@@ -32,6 +32,10 @@ module.exports = class extends BaseCommand {
 
       message.channel.send(confirm).then(m => m.delete({ timeout: 60000}));
 
+      const embed = new Discord.MessageEmbed()
+      .setColor('GREEN')
+      .setTitle('Slowmode Changed')
+      .setDescription(`<a:tick:733258832456843275> Successfully changed the slowmode of this channel to **${args[0]}**`)
 
 
 const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
@@ -40,7 +44,7 @@ message.channel.awaitMessages(filter, {max: 1, time: 30000})
         const msg = collected.first()
         if(msg.content.toLowerCase() === "yes") {
           message.channel.setRateLimitPerUser(args[0],);
-            message.channel.send(`<a:tick:733258832456843275> Successfully changed the slowmode of this channel to **${args[0]}**`)
+            message.channel.send(embed)
         } else {
             if(msg.content.toLowerCase() === "no")
                 message.channel.send('Cancelled command.')
