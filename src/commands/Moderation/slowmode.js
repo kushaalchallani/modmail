@@ -13,13 +13,6 @@ module.exports = class extends BaseCommand {
     
     if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command").then(m => m.delete({ timeout: 5000}));
 
-    const confirm = new Discord.MessageEmbed()
-    .setColor('BLUE')
-    .setTitle('Confirmation')
-    .setDescription(`${message.author,username}, you are about to change the slowmode to `)
-
-    message.channel.send(confirm)
-
 
     if (!args[0])
     return message.channel.send(
@@ -32,6 +25,14 @@ module.exports = class extends BaseCommand {
   if (!reason) {
     reason == "No reason provided!";
   }
+
+
+      const confirm = new Discord.MessageEmbed()
+      .setColor('BLUE')
+      .setTitle('Confirmation')
+      .setDescription(`**${message.author,username}**, you are about to change the slowmode to **${args[0]} seconds. Type **`/yes`/**`)
+
+      message.channel.send(confirm)
 
       const embed = new Discord.MessageEmbed()
       .setColor('GREEN')
