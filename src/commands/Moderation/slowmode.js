@@ -13,6 +13,12 @@ module.exports = class extends BaseCommand {
     
     if (!message.member.hasPermission(["MANAGE_CHANNELS", "ADMINISTRATOR"])) return message.channel.send("You do not have permissions to perform this command").then(m => m.delete({ timeout: 5000}));
 
+    const confirm = new Discord.MessageEmbed()
+    .setColor('BLUE')
+    .setTitle('Confirmation')
+    .setDescription(`${message.author.username}, you are about to change the slowmode to `)
+
+
     if (!args[0])
     return message.channel.send(
       `You did not specify the time in seconds you wish to set this channel's slow mode too!`
