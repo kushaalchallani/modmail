@@ -36,7 +36,7 @@ module.exports = class extends BaseCommand {
       .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 
-      message.channel.send("your message")
+      message.channel.send("embed")
 
 const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
 message.channel.awaitMessages(filter, {max: 1, time: 30000})
