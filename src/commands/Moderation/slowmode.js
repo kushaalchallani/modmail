@@ -16,7 +16,7 @@ module.exports = class extends BaseCommand {
     const confirm = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setTitle('Confirmation')
-    .setDescription(`${message.author.username}, you are about to change the slowmode to `)
+    .setDescription(`${message.author.user}, you are about to change the slowmode to `)
 
     message.channel.send(confirm)
 
