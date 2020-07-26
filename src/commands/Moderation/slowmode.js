@@ -33,7 +33,7 @@ module.exports = class extends BaseCommand {
       .setTitle('Confirmation')
       .setDescription(`**${message.author}**, you are about to change the slowmode to **${args[0]} seconds**. Type **\`yes\`** to change the slowmode of this channel.\n\nTo cancel the command type **\`no\`**`)
 
-      message.channel.send(confirm).then(m => m.delete({ timeout: 5000}));
+      message.channel.send(confirm).then(m => m.delete({ timeout: 60000}));
 
       const embed = new Discord.MessageEmbed()
       .setColor('GREEN')
