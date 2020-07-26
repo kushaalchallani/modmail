@@ -29,13 +29,25 @@ module.exports = class extends BaseCommand {
 
   message.channel.setRateLimitPerUser(args[0], reason);
 
-      const embed = new MessageEmbed()
+      const embed = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setTitle('Slowmode')
-      .setDescription(`<a:tick:733258832456843275> Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
+      .setDescription(`:tick: Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
       .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 
-      message.channel.send(embed)
+      message.channel.send("your message")
+
+const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "option1" || m.content.toLowerCase() === "option2")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
+message.channel.awaitMessages(filter, {max: 1, time: 30000})
+    .then(collected => {
+        const msg = collected.first()
+        if(msg.content.toLowerCase() === "option1") {
+            message.channel.send(embed)
+        } else {
+            if(msg.content.toLowerCase() === "option2")
+                message.channel.send('Cancelled command.')
+        }
+    })
   }
   }
