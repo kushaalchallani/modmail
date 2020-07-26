@@ -23,9 +23,6 @@ module.exports = class extends BaseCommand {
   let reason = message.content.slice(
     client.prefix.length + 9 + args[0].length + 1
   );
-  if (!reason) {
-    reason == "No reason provided!";
-  }
 
 
       const confirm = new Discord.MessageEmbed()
@@ -38,7 +35,7 @@ module.exports = class extends BaseCommand {
       const embed = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setTitle('Slowmode')
-      .setDescription(`<a:tick:733258832456843275>  Set the slowmode of this channel to **${args[0]}** with the reason: **${reason}**`)
+      .setDescription(`<a:tick:733258832456843275> Successfully changed the slowmode of this channel to **${args[0]}**`)
       .setFooter(`Done by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 
@@ -47,7 +44,7 @@ message.channel.awaitMessages(filter, {max: 1, time: 30000})
     .then(collected => {
         const msg = collected.first()
         if(msg.content.toLowerCase() === "yes") {
-          message.channel.setRateLimitPerUser(args[0], reason);
+          message.channel.setRateLimitPerUser(args[0],);
             message.channel.send(embed)
         } else {
             if(msg.content.toLowerCase() === "no")
