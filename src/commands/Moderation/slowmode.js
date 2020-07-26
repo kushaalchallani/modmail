@@ -18,6 +18,8 @@ module.exports = class extends BaseCommand {
     .setTitle('Confirmation')
     .setDescription(`${message.author.username}, you are about to change the slowmode to `)
 
+    message.channel.send(confirm)
+
 
     if (!args[0])
     return message.channel.send(
