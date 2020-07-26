@@ -38,14 +38,14 @@ module.exports = class extends BaseCommand {
 
       message.channel.send("your message")
 
-const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "option1" || m.content.toLowerCase() === "option2")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
+const filter = (m) => m.author.id === message.author.id && (m.content.toLowerCase() === "yes" || m.content.toLowerCase() === "no")  // Create a filter, only accept messages from the user that used the command and the message includes "yes" or "no"
 message.channel.awaitMessages(filter, {max: 1, time: 30000})
     .then(collected => {
         const msg = collected.first()
-        if(msg.content.toLowerCase() === "option1") {
+        if(msg.content.toLowerCase() === "yes") {
             message.channel.send(embed)
         } else {
-            if(msg.content.toLowerCase() === "option2")
+            if(msg.content.toLowerCase() === "no")
                 message.channel.send('Cancelled command.')
         }
     })
