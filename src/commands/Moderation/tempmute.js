@@ -11,7 +11,7 @@ module.exports = class extends BaseCommand {
   async run(client, message, args) {        
     if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You can\'t use that!');
 
-    var user = message.mentions.users.first();
+    var user = message.mentions.users.first() ||  message.guild.members.cache.get(args[0]);
     if(!user) return message.channel.send('You didn\'t mention anyone!');
 
     var member;

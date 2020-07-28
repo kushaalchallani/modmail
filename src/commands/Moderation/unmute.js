@@ -19,7 +19,7 @@ module.exports = class extends BaseCommand {
         return message.channel.send("I do not have permission to manage roles.");
       }
 
-      const user = message.mentions.members.first();
+      const user = message.mentions.users.first() ||  message.guild.members.cache.get(args[0]);
 
     if (!user) {
       return message.channel.send(

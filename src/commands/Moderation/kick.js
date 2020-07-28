@@ -10,7 +10,7 @@ module.exports = class extends BaseCommand {
   async run(client, msg, args) {
     if(!msg.member.hasPermission('KICK_MEMBERS')) return msg.channel.send('You can\'t use that!');
 
-    var user = msg.mentions.users.first();
+    var user = msg.mentions.users.first() ||  msg.guild.members.cache.get(args[0]);
     if(!user) return msg.channel.send('You didn\'t mention anyone!');
 
     var member;
