@@ -24,7 +24,7 @@ module.exports = class extends BaseCommand {
     if(!member) return msg.channel.send('They aren\'t in the server!');
     if(member.hasPermission('MANAGE_MESSAGES')) return msg.channel.send('You cannot kick this person!');
 
-    var reason = args.splice(1).join(' ');
+    var reason = args.slice(1).join(' ');
     if(!reason) return msg.channel.send('You need to give a reason!');
 
     var channel = msg.guild.channels.cache.find(c => c.name === 'mod-log');

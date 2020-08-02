@@ -13,10 +13,12 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^12.2.0",
+    "discord_ticket_maker": "^1.1.2",
     "dotenv": "^8.2.0",
     "moment": "^2.27.0",
     "mongoose": "^5.9.21",
     "ms": "^2.1.2",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "quick.db": "^7.1.1"
   }
 }
