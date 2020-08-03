@@ -25,13 +25,11 @@ client.on('message', async message => {
 
   if (mentioned) {
     let status = await afk.fetch(mentioned.id);
-    let args = message.content.slice(prefix.length).trim().split(/ +/g);
-    let reason = args.slice(1).join(" ");
 
     if (status) {
       const embed = new MessageEmbed()
       .setColor('BLUE')
-      .setDescription(`**(${mentioned.user.tag})** is currently AFK: **${reason}**`)
+      .setDescription(`**(${mentioned.user.tag})** is currently AFK: **${status}**`)
       message.channel.send(embed).then(i => i.delete({timeout: 5000}));
     }
   }
